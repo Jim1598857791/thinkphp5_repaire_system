@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/bootstrap.min.css">
+    <title>login</title>
+</head>
+<body>
+<!--<form action="{:url('login')}" method="post">-->
+<!--<label for="userid">username:</label><input type="text" name="userid" id="userid"/>-->
+<!--<label for="password">password:</label><input type="password" name="password" id="password"/>-->
+<!--<button type="submit">submit</button>-->
+<!--</form>-->
+<div class="container-fluid">
+    <form form action="{:url('login')}" method="post" class="form-signin form-horizontal" role="form">
+        <h2 class="form-signin-heading">登录</h2>
+        <label for="userid" class="sr-only">username</label>
+        <input type="text" name="userid" id="userid" class="form-control" placeholder="用户名、手机或邮箱" required autofocus>
+        <label for="password" class="sr-only">password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="密码" required>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    </form>
+</div>
+
+</body>
+</html>

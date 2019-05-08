@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/thinkphp5/public/static/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/thinkphp5/public/static/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/custom.css"/>
+    <script src="static/bootstrap/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>-->
+    <script src="static/bootstrap/js/md5.js" type="text/javascript" charset="utf-8"></script>
+    <title>Title</title>
+</head>
+<body class="container">
+<div class="row">
+    <div class="col-md-12">
+
+        <form action="{:url('insert')}" method="post">
+            <label>姓名:</label>
+            <input type="text" name="name"/>
+            <label>用户名:</label>
+            <input type="text" name="username"/>
+            <label>性别:</label>
+            <select name="sex">
+                <option value="0">男</option>
+                <option value="1">女</option>
+            </select>
+            <label>邮箱:</label>
+            <input type="text" name="email"/>
+            <!-- 1 <input type="hidden" name="create_time" value="{:time()}" /> -->
+            <button class="btn btn-primary" type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<!--注意：一定要先刷新新增页面，新增信息后，点击保存进行测试，因为后退并没有改变HTML代码。-->

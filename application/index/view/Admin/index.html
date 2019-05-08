@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/bootstrap.min.css">
+    <title>管理工单</title>
+</head>
+<body>
+<!--<form action="{:url('login')}" method="post">-->
+<!--<label for="userid">username:</label><input type="text" name="userid" id="userid"/>-->
+<!--<label for="password">password:</label><input type="password" name="password" id="password"/>-->
+<!--<button type="submit">submit</button>-->
+<!--</form>-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <a href="{:url('index/Admin/worker')}" class="btn btn-primary"><i
+                            class="glyphicon glyphicon-plus"></i>&nbsp;管理维修人员</a>
+                    <a href="{:url('index/Login/logOut')}" class="btn btn-primary"><i
+                            class="glyphicon glyphicon-plus"></i>&nbsp;注销</a>
+                    <hr/>
+                </div>
+            </div>
+            <h3> 个人信息 </h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                </div>
+                <div class="col-md-6">
+                    <h2>
+                        {$user->getData('user_name')}
+                    </h2>
+                    <p>
+                        {$user->getData("user_group")}
+                    </p>
+                    <p>
+
+                        {eq name='$user->getData("user_sex")' value='0'}男{else /}女{/eq}
+                    </p>
+                    <p>
+                        <a class="btn" href="#">查看更多 »</a>
+                    </p>
+                </div>
+            </div>
+            <!--<button type="button" class="btn btn-success"></button>-->
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row" style="padding-top: 25px">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table table-hover table-bordered">
+                <tr class="info">
+
+                    <th>序号</th>
+                    <th>状态</th>
+                    <th>维修区域</th>
+                    <th>具体地址</th>
+                    <th>报修日期</th>
+                    <th>维修日期</th>
+                    <th>类型</th>
+                    <th>描述</th>
+                    <th>电话</th>
+                    <th>订单ID</th>
+                    <th>报修人</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="all_orders" id="all_order" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$all_order->getData('repaire_state')}</td>
+                    <td>{$all_order->getData('repaire_area')}</td>
+                    <td>{$all_order->getData('repair_location')}</td>
+                    <td>{$all_order->getData('create_time')}</td>
+                    <td>{$all_order->getData('repaired_date')}</td>
+                    <td>{$all_order->getData('repaire_type')}</td>
+                    <td>{$all_order->getData('repaire_des')}</td>
+                    <td>{$all_order->getData('repaire_tel')}</td>
+                    <td>{$all_order->getData('repaire_order_id')}</td>
+                    <td>{$all_order->getData('repaire_person_name')}</td>
+                    <td><a class="btn"
+                           href="{:url('index/Admin/adminDetail?id='.$all_order->getData('repaire_order_id'))}">查看详情</a>
+                        <a class="btn" href="{:url('index/Admin/delete')}">删除</a>
+                        <a class="btn" href="{:url('index/Admin/edit')}">编辑</a>
+                    </td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

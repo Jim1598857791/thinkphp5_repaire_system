@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/bootstrap.min.css">
+    <script src="static/bootstrap/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="static/bootstrap/js/md5.js" type="text/javascript" charset="utf-8"></script>
+    <title>报修工单详情</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
+            <hr/>
+            <tr>
+                <td>{$user->getData('user_name')}</td>
+                <td>{eq name='$user->getData("user_sex")' value='0'}男{else /}女{/eq}</td>
+            </tr>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row" style=" margin-bottom: 20px;">
+                <div class="col-md-12" style="background-color: #CCFFFF; padding: 20px;">
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-2">
+                            <span class="badge badge-default"> 66666</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge badge-default">{$order->getData('repaire_person_name')}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge badge-default">{$order->getData('repaire_type')}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="page-header">
+                                <h4>
+                                    <small>{$order->getData('repaire_order_id')}</small>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="Bootstrap Image Preview"
+                                 src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                        </div>
+                        <div class="col-md-8">
+                            <h2>
+                                Heading
+                            </h2>
+                            <p>
+                                {$order->getData('repaire_des')}
+                                <!--<a class="btn"-->
+                                <!--href="{:url('index/Repaire/detail?id='.$order->getData('repaire_order_id'))}">查看详情</a>-->
+                            </p>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>{$order->getData('repaire_area')}</strong>
+                                {$order->getData('repair_location')}
+
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                <abbr title="Phone">P:</abbr> {$order->getData('repaire_tel')}
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <h4>维修进度</h4>
+                        <ul class="timeline">
+
+                            <li>
+                                <a target="_blank" href="https://www.totoprayogo.com/#">你申请维修</a>
+                                <a href="#" class="float-right">{$order->getData('create_time')}</a>
+                                <p>系统已经收到了你的请求</p>
+                            </li>
+                            {$order->getData('repaire_state'),$order->getData('repaire_start_time'),$order->getData('repaire_finish_time')|orderTimeLine}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</body>
+<style type="text/css">
+    ul.timeline {
+        list-style-type: none;
+        position: relative;
+    }
+
+    ul.timeline:before {
+        content: ' ';
+        background: #d4d9df;
+        display: inline-block;
+        position: absolute;
+        left: 29px;
+        width: 2px;
+        height: 100%;
+        z-index: 400;
+    }
+
+    ul.timeline > li {
+        margin: 20px 0;
+        padding-left: 20px;
+    }
+
+    ul.timeline > li:before {
+        content: ' ';
+        background: white;
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #22c0e8;
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        z-index: 400;
+    }
+</style>
+</html>

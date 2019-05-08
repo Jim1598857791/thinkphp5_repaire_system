@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/custom.css"/>
+    <script src="/tp5/public/static/bootstrap/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>-->
+    <script src="static/bootstrap/js/md5.js" type="text/javascript" charset="utf-8"></script>
+    <title>提交维修工单</title>
+    <style type="text/css">
+        .add_form {
+            padding: 50px;
+        }
+
+        .row {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <form class="add_form" form action="{:url('insert')}" method="post" role="form">
+                <div class="row ">
+                    <label class="col-md-4">维修区域:</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="repaire_area">
+                            <option value="main_office_teach ">主校区</option>
+                            <option value="zhangqiu_teach ">章丘校区</option>
+                            <option value="dong_teach ">东校区</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-4">具体地点:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="repair_location"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-4">维修时间:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" name="repaired_date"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-4">维修类别:</label>
+                    <div class="col-md-8">
+                        <select class="form-control" name="repaire_type">
+                            <option value="0">水</option>
+                            <option value="1">电</option>
+                            <option value="2">暖</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-4">故障描述:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="repaire_des" name="repaire_des"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-4">联系电话:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="repaire_tel" name="repaire_tel"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-4">
+                        选择图片或文件
+                    </label>
+                    <div class="col-md-8">
+                        <input class="form-control-file" type="file" id="applyInputFile">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button class="btn btn-primary" type="submit">保存</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+</body>
+</html>
+<!--注意：一定要先刷新新增页面，新增信息后，点击保存进行测试，因为后退并没有改变HTML代码。-->

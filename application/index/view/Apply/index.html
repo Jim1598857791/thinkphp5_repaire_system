@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"-->
+    <!--integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/bootstrap.css">
+    <script src="static/bootstrap/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="static/bootstrap/js/md5.js" type="text/javascript" charset="utf-8"></script>
+    <title>报修工单</title>
+</head>
+<body>
+<div class="container-fluid" style="background-color: white">
+    <div class="row">
+        <!--工单列表-->
+        <div class="col-md-8">
+            {volist name="my_orders" id="my_order" key="key"}
+            <div class="row self_repaire_order" style=" margin-bottom: 20px;">
+                <!--工单 -->
+                <div class="col-md-12" style="background-color: #CCFFFF;  ">
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-2  my-auto">
+                            <!-- 维修状态-->
+                            <span class="badge badge-default">
+                                {$my_order->getData('repaire_state')|judgeOrderState}
+                            </span>
+                        </div>
+                        <div class="col-md-2 my-auto">
+                            <span class="badge badge-default">{$my_order->getData('repaire_person_name')}</span>
+                        </div>
+                        <div class="col-md-2 my-auto">
+                            <span class="badge badge-default">{$my_order->getData('repaire_type')}</span>
+                        </div>
+                        <div class="col-md-6 my-auto">
+                            <small>{$my_order->getData('repaire_order_id')}</small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="Bootstrap Image Preview"
+                                 src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                        </div>
+                        <div class="col-md-8">
+                            <h2>
+                                Heading
+                            </h2>
+                            <p>
+                                {$my_order->getData('repaire_des')}
+                                <a class="btn"
+                                   href="{:url('index/Apply/applyDetail?id='.$my_order->getData('repaire_order_id'))}">查看详情</a>
+                            </p>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-6 my-auto">
+                            <address>
+                                <strong>{$my_order->getData('repaire_area')}</strong>
+                                {$my_order->getData('repair_location')}
+
+                            </address>
+                        </div>
+                        <div class="col-md-6 my-auto">
+
+                            <address>
+
+                                <abbr title="Phone">P:</abbr> {$my_order->getData('repaire_tel')}
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+            <h2>其他人报修</h2>
+            {volist name="other_orders" id="other_orders" key="key"}
+            <div class="row other_repaire_order" style=" margin-bottom: 20px;">
+                <div class="col-md-12" style="background-color: #CCFFFF; padding: 20px;">
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-2 my-auto">
+                            <span class="badge badge-default">
+                             {$my_order->getData('repaire_state')|judgeOrderState}
+                            </span>
+                        </div>
+                        <div class="col-md-2 my-auto">
+                            <span class="badge badge-default">{$other_orders->getData('repaire_person_name')}</span>
+                        </div>
+                        <div class="col-md-2 my-auto">
+                            <span class="badge badge-default">{$other_orders->getData('repaire_type')}</span>
+                        </div>
+                        <div class="col-md-6 my-auto">
+                            <div class="page-header">
+                                <h4>
+                                    <small>{$my_order->getData('repaire_order_id')}</small>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="Bootstrap Image Preview"
+                                 src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                        </div>
+                        <div class="col-md-8">
+                            <h2>
+                                Heading
+                            </h2>
+                            <p>
+                                {$my_order->getData('repaire_des')}
+                                <a class="btn"
+                                   href="{:url('index/Apply/applyDetail?id='.$my_order->getData('repaire_order_id'))}">查看详情</a>
+                            </p>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>{$other_orders->getData('repaire_area')}</strong>
+                                {$other_orders->getData('repair_location')}
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                <abbr title="Phone">P:</abbr> {$other_orders->getData('repaire_tel')}
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/volist}
+        </div>
+        <!--个人信息-->
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr/>
+                        <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;我要报修</a>
+                        <a href="{:url('index/Login/logOut')}" class="btn btn-primary"><i
+                                class="glyphicon glyphicon-plus"></i>&nbsp;注销</a>
+                        <hr/>
+                    </div>
+                </div>
+                <h3>
+                    个人信息
+                </h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>
+                            {$user->getData('user_name')}
+                        </h2>
+                        <p>
+                            {eq name='$user->getData("user_sex")' value='0'}男{else /}女{/eq}
+                        </p>
+                        <p>
+                            <a class="btn" href="#">查看更多 »</a>
+                        </p>
+                    </div>
+                </div>
+                <!--<button type="button" class="btn btn-success"></button>-->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/tp5/public/static/bootstrap/css/bootstrap.min.css">
+    <script src="static/bootstrap/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="static/bootstrap/js/md5.js" type="text/javascript" charset="utf-8"></script>
+    <title>维修工单详情</title>
+</head>
+<body>
+<div class="container-fluid">
+    <duv class="col-md-12">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <hr/>
+            <tr>
+                <td>{$user->getData('user_name')}</td>
+                <td>{eq name='$user->getData("user_sex")' value='0'}男{else /}女{/eq}</td>
+            </tr>
+        </div>
+        <div class="col-md-2"></div>
+    </duv>
+    <div class="row">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            <div class="row" style=" margin-bottom: 20px;">
+                <div class="col-md-12" style="background-color: #CCFFFF; padding: 20px;">
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-2">
+                            <span class="badge badge-default"> {$order->getData('repaire_state')}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge badge-default">{$order->getData('repaire_person_name')}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge badge-default">{$order->getData('repaire_type')}</span>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="page-header">
+                                <h4>
+                                    <small>{$order->getData('repaire_order_id')}</small>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img alt="Bootstrap Image Preview"
+                                 src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+                        </div>
+                        <div class="col-md-8">
+                            <h2>
+                                Heading
+                            </h2>
+                            <p>
+                                {$order->getData('repaire_des')}
+                                <button type="button" class="btn btn-success" href="{:url('index/Repaire/doRepaire?id='.$order->getData('repaire_order_id').'&state=0')}">
+                                    开始维修
+                                </button>
+                                <a class="btn"
+                                   href="{:url('index/Repaire/doRepaire?id='.$order->getData('repaire_order_id').'&state=0')}">开始维修s</a>
+                                <a class="btn"
+                                   href="{:url('index/Repaire/doRepaire?id='.$order->getData('repaire_order_id').'&state=1')}">维修结束</a>
+                            </p>
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: #66CCFF">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>{$order->getData('repaire_area')}</strong>
+                                {$order->getData('repair_location')}
+
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                <abbr title="Phone">P:</abbr> {$order->getData('repaire_tel')}
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
+</body>
+</html>
